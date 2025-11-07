@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Timetable - HOD Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="title-section">
+        <h1>Timetable</h1>
+        <h2>Department of Electrical Engineering</h2>
+      </div>
+      <a href="index.html" class="logout-btn" style="text-decoration:none;display:inline-block;">Back</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="timetable-section">
+      <div class="section-header">
+        <h2>Weekly Timetable</h2>
+        <div class="controls">
+          <button id="saveBtn" class="btn btn-primary">Save</button>
+          <button id="resetBtn" class="btn btn-secondary">Reset</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="timetable" aria-label="Weekly timetable">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+            </tr>
+          </thead>
+          <tbody id="ttBody">
+            <!-- rows inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted">Tip: Click any cell to edit. Changes are saved to your browser (localStorage).</p>
+    </section>
+  </main>
+
+  <script src="timetable.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management - HOD Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="title-section">
+                <h1>Student Management</h1>
+                <h2>Department of Electrical Engineering</h2>
+            </div>
+            <a href="index.html" class="logout-btn" style="text-decoration:none;">Back</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="students-section">
+            <div class="section-header">
+                <h2>Students Records</h2>
+                <button id="addStudentBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Student
+                </button>
+            </div>
+
+            <!-- Search and filters -->
+            <div class="controls-row">
+                <div class="search-box">
+                    <input type="text" id="searchStudent" placeholder="Search students..." class="search-input">
+                </div>
+                <div class="filters">
+                    <select id="batchFilter" class="select-filter">
+                        <option value="">All Batches</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                    <select id="semesterFilter" class="select-filter">
+                        <option value="">All Semesters</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                        <option value="8">Semester 8</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Students table -->
+            <div class="table-wrap">
+                <table class="data-table" id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Batch</th>
+                            <th>Semester</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsList">
+                        <!-- Students will be inserted here by JS -->
+                    </tbody>
+                </table>
+                <p id="noStudents" class="muted text-center" style="display: none;">No students found. Add some using the button above.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add/Edit Student Modal Template -->
+    <template id="studentModalTemplate">
+        <div class="modal-content">
+            <form id="studentForm" class="form-grid">
+                <div class="form-group">
+                    <label for="rollNo">Roll Number*</label>
+                    <input type="text" id="rollNo" name="rollNo" required 
+                           pattern="[0-9]+" title="Please enter a valid roll number">
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="batch">Batch*</label>
+                    <select id="batch" name="batch" required>
+                        <option value="">Select Batch</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="semester">Semester*</label>
+                    <select id="semester" name="semester" required>
+                        <option value="">Select Semester</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                        <option value="8">Semester 8</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" 
+                           pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <script src="students.js"></script>
+</body>
+</html>

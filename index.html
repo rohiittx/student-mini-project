@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="title-section">
+                <h1>HOD Dashboard</h1>
+                <h2>Department of Electrical Engineering</h2>
+            </div>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="quick-overview">
+            <h2>Quick Overview</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">245</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Faculty Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Active Batches</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Subjects</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="management">
+            <h2>Management</h2>
+            <div class="management-grid">
+                <div class="management-card" data-section="students">
+                    <div class="icon-circle">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Students</h3>
+                    <p>Manage student records</p>
+                </div>
+                <div class="management-card" data-section="faculty">
+                    <div class="icon-circle">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Faculty</h3>
+                    <p>Manage faculty members</p>
+                </div>
+                <div class="management-card" data-section="batches">
+                    <div class="icon-circle">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Batches</h3>
+                    <p>Manage class batches</p>
+                </div>
+                <div class="management-card" data-section="subjects">
+                    <div class="icon-circle">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Subjects</h3>
+                    <p>Manage subjects & curriculum</p>
+                </div>
+                <div class="management-card" data-section="attendance">
+                    <div class="icon-circle">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Attendance</h3>
+                    <p>View attendance reports</p>
+                </div>
+                <div class="management-card" data-section="assignments">
+                    <div class="icon-circle">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Assignments</h3>
+                    <p>Monitor assignments</p>
+                </div>
+                <div class="management-card" data-section="timetable">
+                    <div class="icon-circle">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Timetable</h3>
+                    <p>Manage class schedules</p>
+                </div>
+                <div class="management-card" data-section="announcements">
+                    <div class="icon-circle">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Announcements</h3>
+                    <p>Send notifications</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
