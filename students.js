@@ -24,6 +24,37 @@ document.addEventListener('DOMContentLoaded', () => {
         semester: ''
     };
 
+    // Populate batch filter from batches storage
+    function populateBatchFilter() {
+        try {
+            const raw = localStorage.getItem('hod_batches_v1');
+            const batches = raw ? JSON.parse(raw) : [];
+            // clear existing
+            if (batchFilter) {
+                batchFilter.innerHTML = '<option value="">All Batches</option>';
+                if (batches.length) {
+                    const years = new Set();
+                    batches.forEach(b => {
+                        years.add(b.year || b.id || b.name);
+                    });
+                    Array.from(years).sort().forEach(y => {
+                        const opt = document.createElement('option'); opt.value = y; opt.textContent = y; batchFilter.appendChild(opt);
+                    });
+                } else {
+                    ['2025','2024','2023'].forEach(y => {
+                        const opt = document.createElement('option'); opt.value = y; opt.textContent = y; batchFilter.appendChild(opt);
+                    });
+                }
+            }
+        } catch (e) { console.error('populateBatchFilter failed', e); }
+    }
+
+    // Listen for updates from batches page
+    window.addEventListener('batchesUpdated', () => {
+        populateBatchFilter();
+        showToast('Batch list updated');
+    });
+
     // Initialize toast container (reuse from main dashboard if exists)
     function getToastContainer() {
         let container = document.querySelector('.toast-container');
@@ -138,6 +169,32 @@ document.addEventListener('DOMContentLoaded', () => {
             onShow: (modalEl) => {
                 // Get and enhance form
                 const form = modalEl.querySelector('#studentForm');
+                // Populate batch dropdown dynamically from batches storage
+                try {
+                    const batchSelect = form.elements['batch'];
+                    if (batchSelect) {
+                        // clear existing options
+                        batchSelect.innerHTML = '<option value="">Select Batch</option>';
+                        const raw = localStorage.getItem('hod_batches_v1');
+                        const batches = raw ? JSON.parse(raw) : [];
+                        // if no batches, provide years fallback
+                        if (!batches.length) {
+                            ['2025','2024','2023'].forEach(y => {
+                                const opt = document.createElement('option'); opt.value = y; opt.textContent = y; batchSelect.appendChild(opt);
+                            });
+                        } else {
+                            batches.forEach(b => {
+                                const opt = document.createElement('option');
+                                // value: batch id, label: Name (Year)
+                                opt.value = b.id || b.year || b.name;
+                                opt.textContent = `${b.name || b.id} (${b.year || ''})`;
+                                batchSelect.appendChild(opt);
+                            });
+                        }
+                    }
+                } catch (err) {
+                    console.error('Failed to populate batch list', err);
+                }
                 // Set form attributes for proper submission
                 form.setAttribute('novalidate', 'true'); // We'll handle validation in JS
                 if (isEdit) {
@@ -293,5 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial render
+    populateBatchFilter();
     renderStudents();
 });

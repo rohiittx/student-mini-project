@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Subject Management - HOD Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="title-section">
+        <h1>Subject Management</h1>
+        <h2>Department of Electrical Engineering</h2>
+      </div>
+      <a href="index.html" class="logout-btn" style="text-decoration:none;">Back</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="students-section">
+      <div class="section-header">
+        <h2>Subjects & Curriculum</h2>
+        <button id="addSubjectBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Subject</button>
+      </div>
+
+      <div class="controls-row">
+        <div class="search-box">
+          <input id="searchSubject" class="search-input" placeholder="Search subjects by code or name...">
+        </div>
+        <div class="filters">
+          <select id="semesterFilterSub" class="select-filter">
+            <option value="">All Semesters</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="subjectsTable">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Title</th>
+              <th>Credits</th>
+              <th>Semester</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="subjectsList"></tbody>
+        </table>
+        <p id="noSubjects" class="muted text-center" style="display:none">No subjects found. Add one using the button above.</p>
+      </div>
+    </section>
+  </main>
+
+  <template id="subjectModalTemplate">
+    <div class="modal-content">
+      <form id="subjectForm" class="form-grid">
+        <div class="form-group">
+          <label for="subCode">Subject Code*</label>
+          <input id="subCode" name="code" required>
+        </div>
+        <div class="form-group">
+          <label for="subTitle">Title*</label>
+          <input id="subTitle" name="title" required>
+        </div>
+        <div class="form-group">
+          <label for="subCredits">Credits*</label>
+          <input id="subCredits" name="credits" type="number" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="subSemester">Semester*</label>
+          <select id="subSemester" name="semester" required>
+            <option value="">Select Semester</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="subDesc">Short Description</label>
+          <input id="subDesc" name="description">
+        </div>
+      </form>
+    </div>
+  </template>
+
+  <script src="subjects.js"></script>
+</body>
+</html>

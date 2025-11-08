@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Batch Management - HOD Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="title-section">
+        <h1>Batch Management</h1>
+        <h2>Department of Electrical Engineering</h2>
+      </div>
+      <a href="index.html" class="logout-btn" style="text-decoration:none;">Back</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="students-section">
+      <div class="section-header">
+        <h2>Active Batches</h2>
+        <button id="addBatchBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Batch</button>
+      </div>
+
+      <div class="controls-row">
+        <div class="search-box">
+          <input id="searchBatch" class="search-input" placeholder="Search batches by name or id...">
+        </div>
+        <div class="filters">
+          <select id="yearFilter" class="select-filter">
+            <option value="">All Years</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="batchesTable">
+          <thead>
+            <tr>
+              <th>Batch ID</th>
+              <th>Name</th>
+              <th>Year</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="batchesList"></tbody>
+        </table>
+        <p id="noBatches" class="muted text-center" style="display:none">No batches found. Add one using the button above.</p>
+      </div>
+    </section>
+  </main>
+
+  <template id="batchModalTemplate">
+    <div class="modal-content">
+      <form id="batchForm" class="form-grid">
+        <div class="form-group">
+          <label for="batchId">Batch ID*</label>
+          <input id="batchId" name="id" required>
+        </div>
+        <div class="form-group">
+          <label for="batchName">Name*</label>
+          <input id="batchName" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="batchYear">Year*</label>
+          <select id="batchYear" name="year" required>
+            <option value="">Select Year</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input id="startDate" name="start" type="date">
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input id="endDate" name="end" type="date">
+        </div>
+        <div class="form-group">
+          <label for="activeFlag">Active</label>
+          <select id="activeFlag" name="active">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </template>
+
+  <script src="batches.js"></script>
+</body>
+</html>

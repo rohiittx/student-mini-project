@@ -75,6 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return;
         }
+        if (sectionKey.toLowerCase() === 'batches' || sectionKey.toLowerCase() === 'batch' ) {
+            try {
+                window.location.assign('./batches.html');
+            } catch (e) {
+                window.location.href = 'batches.html';
+            }
+            return;
+        }
+        if (sectionKey.toLowerCase() === 'subjects' || sectionKey.toLowerCase() === 'subject') {
+            try {
+                window.location.assign('./subjects.html');
+            } catch (e) {
+                window.location.href = 'subjects.html';
+            }
+            return;
+        }
 
         const title = card.querySelector('h3')?.innerText || 'Section';
         const desc = card.querySelector('p')?.innerText || '';
